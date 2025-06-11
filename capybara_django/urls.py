@@ -14,14 +14,26 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.shortcuts import render
 
+@api_view(['GET'])
 def root(request):
-    return render(request, 'hello-world.html')
-
+    return Response({
+        'message': 'Welcome to the Capybara Django API',
+    })
+    
 urlpatterns = [
+    # Django
     path('admin/', admin.site.urls),
+    
+    # Third-party apps
+    path('api-auth/', include('rest_framework.urls')),
+    
+    # Local
     path('', root)
 ]
