@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.shortcuts import render
+
+def root(request):
+    return render(request, 'hello-world.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', root)
 ]
