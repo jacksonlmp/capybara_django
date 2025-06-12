@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     # Thrid-party apps
     'rest_framework',
     
+    # Local
+    'blog',
+    'user'
+    
 ]
 
 MIDDLEWARE = [
