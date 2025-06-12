@@ -32,8 +32,8 @@ class BlogPost(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="criado por")
 
     class Meta:
-        verbose_name = "Postagem do Blog"
-        verbose_name_plural = "Postagens do Blog"
+        verbose_name = "Postagem"
+        verbose_name_plural = "Postagens"
         ordering = ['-created_at']
 
     def __str__(self):
