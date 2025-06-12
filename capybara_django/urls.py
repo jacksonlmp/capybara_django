@@ -16,6 +16,7 @@ Including another URLconf
 """
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.reverse import reverse
 
 from django.contrib import admin
 from django.urls import path, include
@@ -24,7 +25,7 @@ from django.shortcuts import render
 @api_view(['GET'])
 def root(request):
     return Response({
-        'message': 'Welcome to the Capybara Django API',
+        'Blog posts': reverse('blog:post-list', request=request, format=None),
     })
     
 urlpatterns = [
@@ -35,5 +36,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     
     # Local
-    path('', root)
+    path('', root),
+    path('blog/', include('blog.urls', namespace='blog')),
 ]
